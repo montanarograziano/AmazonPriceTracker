@@ -20,7 +20,7 @@ def price_to_number(price):
 
 # Set the Url, maximum namber of pages to search, and the item to find
 URL = "https://www.amazon.it/"
-NUMBER_OF_PAGES = 3
+NUMBER_OF_PAGES = 4
 search_item = str(input('What are you looking for?\n'))
 
 # Setting value do default
@@ -55,9 +55,10 @@ while True:
             driver.get(driver.current_url + "&page=" + str(current_page))
         except:
             break
-
+#This is the XPath of the div containing all product in the research page
     for i in driver.find_elements_by_xpath('//*[@id="search"]/div[1]/div[2]/div/span[3]/div[2]'):
         counter = 0
+#In this XPath we can navigate each element of the div above, wich are the products
         for element in i.find_elements_by_xpath('//div/div/span/div/div/div/div'):
             should_add = True
             name = ""
@@ -79,6 +80,8 @@ while True:
 
             #product = Product(name, price, prev_price, link)
             can_add = True
+
+#To improve accuracy, if not every word of the searched item is in the name of the selected item, it won't be add
             for word in search_terms:
                 if word.lower() not in name.lower():
                     can_add = False
@@ -87,11 +90,12 @@ while True:
                 products.append(Product(name,price, prev_price, link, round(prev_price-price,3)))
              
             counter = counter + 1
+    print('Currently analyzing page ' + str(current_page))
     current_page = current_page - 1
     if current_page == 0:
         break
-    print(current_page)
 
+#Ordering the list of products based on the attribute discount 
 products.sort(reverse=True)
 
 with open('products.json', 'w') as json_file:
@@ -120,6 +124,7 @@ print(json.dumps(chepest_product.serialize(), indent=4, sort_keys=True))
 print('The best deal is: ')
 print(json.dumps(best_deal_product.serialize(), indent=4, sort_keys=True))
 
+#Finally opening the first 5 links of the list
 options = get_web_driver_options()
 set_ignore_certificate_error(options)
 driver = get_chrome_web_driver(options)
