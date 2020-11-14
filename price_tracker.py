@@ -20,7 +20,7 @@ def price_to_number(price):
 
 # Set the Url, maximum namber of pages to search, and the item to find
 URL = "https://www.amazon.it/"
-NUMBER_OF_PAGES = 5
+NUMBER_OF_PAGES = 3
 search_item = str(input('What are you looking for?\n'))
 
 # Setting value do default
@@ -78,12 +78,13 @@ while True:
                 should_add = False
 
             #product = Product(name, price, prev_price, link)
-            
+            can_add = True
             for word in search_terms:
-                can_add = False
-                if word.lower() in name.lower():
-                    if should_add:
-                        products.append(Product(name,price, prev_price, link, round(prev_price-price,3)))
+                if word.lower() not in name.lower():
+                    can_add = False
+
+            if(should_add == True and can_add == True):
+                products.append(Product(name,price, prev_price, link, round(prev_price-price,3)))
              
             counter = counter + 1
     current_page = current_page - 1
@@ -91,7 +92,7 @@ while True:
         break
     print(current_page)
 
-products.sort(reverse=True);
+products.sort(reverse=True)
 
 with open('products.json', 'w') as json_file:
     data = {}
