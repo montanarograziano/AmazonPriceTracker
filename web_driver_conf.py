@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 def get_chrome_web_driver(options):
-    return webdriver.Chrome("./chromedriver", chrome_options=options)
+    return webdriver.Chrome("/usr/bin/chromedriver", chrome_options=options)
 
 def get_web_driver_options():
     return webdriver.ChromeOptions()
