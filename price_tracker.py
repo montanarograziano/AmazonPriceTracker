@@ -111,6 +111,8 @@ for product in products:
         lowest_price = product.price
         chepest_product = product
 
+biggest_discount = products[0].discount
+best_deal_product = products[0]
 
 print('The cheapest product is:\n')
 print(json.dumps(chepest_product.serialize(), indent=4, sort_keys=True))
