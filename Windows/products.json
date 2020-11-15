@@ -1,0 +1,25 @@
+{
+    "Products": [
+        {
+            "discount": 90.0,
+            "link": "https://www.amazon.it/gp/slredirect/picassoRedirect.html/ref=pa_sp_atf_aps_sr_pg1_1?ie=UTF8&adId=A03520252O9F0M7QFH2B9&url=%2FApple-iPhone-11-64GB-Giallo%2Fdp%2FB07XS4NHBM%2Fref%3Dsr_1_1_sspa%3F__mk_it_IT%3D%25C3%2585M%25C3%2585%25C5%25BD%25C3%2595%25C3%2591%26dchild%3D1%26keywords%3Diphone%2B11%26qid%3D1605475259%26sr%3D8-1-spons%26psc%3D1&qualifier=1605475259&id=7555986696667854&widgetName=sp_atf",
+            "name": "Apple iPhone 11 (64GB) - Giallo (include EarPods, alimentatore)",
+            "prev_price": 719.0,
+            "price": 629.0
+        },
+        {
+            "discount": 90.0,
+            "link": "https://www.amazon.it/Apple-iPhone-11-Pro-64GB/dp/B07XS3ZX16/ref=sr_1_6?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=iphone+11&qid=1605475259&sr=8-6",
+            "name": "Apple iPhone 11 Pro (64GB) - Verde Notte",
+            "prev_price": 719.0,
+            "price": 629.0
+        },
+        {
+            "discount": 3.2,
+            "link": "https://www.amazon.it/gp/slredirect/picassoRedirect.html/ref=pa_sp_atf_next_aps_sr_pg3_1?ie=UTF8&adId=A08214653PBSFAI77LZK4&url=%2FESR-Pellicola-Protettiva-Temperato-Protezione%2Fdp%2FB07G3TCNHX%2Fref%3Dsr_1_100_sspa%3F__mk_it_IT%3D%25C3%2585M%25C3%2585%25C5%25BD%25C3%2595%25C3%2591%26dchild%3D1%26keywords%3Diphone%2B11%26qid%3D1605475247%26smid%3DA3035QQWH1OFH7%26sr%3D8-100-spons%26psc%3D1&qualifier=1605475247&id=8766968018188890&widgetName=sp_atf_next",
+            "name": "ESR Pellicola Compatibile con iPhone 11,iPhone XR, 2 Pezzi, Pellicola Vetro Temperato, 3D Massima Protezione a Copertura Totale, Compatibile con iPhone XR,iPhone 11 da 6,1\"",
+            "prev_price": 11.9,
+            "price": 8.7
+        }
+    ]
+}
