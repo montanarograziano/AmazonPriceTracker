@@ -1,3 +1,46 @@
 {
-    "Products": []
+    "Products": [
+        {
+            "discount": 200.0,
+            "link": "https://www.amazon.it/gp/slredirect/picassoRedirect.html/ref=pa_sp_atf_aps_sr_pg1_1?ie=UTF8&adId=A03286212HTSWA0M8Q70E&url=%2FHisense-55U81QF-Quantum-integrata-Esclusiva%2Fdp%2FB086B6TZZ3%2Fref%3Dsr_1_4_sspa%3F__mk_it_IT%3D%25C3%2585M%25C3%2585%25C5%25BD%25C3%2595%25C3%2591%26dchild%3D1%26keywords%3DTv%2B55%2522%2B4k%26qid%3D1613823543%26sr%3D8-4-spons%26psc%3D1&qualifier=1613823543&id=226625594206347&widgetName=sp_atf",
+            "name": "Hisense 55U81QF Smart TV ULED Ultra HD 4K 55\", Quantum Dot, Dolby Vision HDR, HDR10+, Dolby Atmos, Full Array Local Dimming, con Alexa integrata, Tuner DVB-T2/S2 HEVC Main10 [Esclusiva Amazon - 2020]",
+            "prev_price": 999.0,
+            "price": 799.0
+        },
+        {
+            "discount": 150.0,
+            "link": "https://www.amazon.it/gp/slredirect/picassoRedirect.html/ref=pa_sp_atf_next_aps_sr_pg3_1?ie=UTF8&adId=A02555262S6WQPK7JDBV2&url=%2FHisense-55U71QF-Quantum-integrata-Esclusiva%2Fdp%2FB086B8KBHY%2Fref%3Dsr_1_99_sspa%3F__mk_it_IT%3D%25C3%2585M%25C3%2585%25C5%25BD%25C3%2595%25C3%2591%26dchild%3D1%26keywords%3DTv%2B55%2522%2B4k%26qid%3D1613823565%26sr%3D8-99-spons%26psc%3D1&qualifier=1613823565&id=3796775938825923&widgetName=sp_atf_next",
+            "name": "Hisense 55U71QF Smart TV ULED Ultra HD 4K 55\", Quantum Dot, Dolby Vision HDR, HDR10+, Dolby Atmos, Full Array Local Dimming, con Alexa integrata, Tuner DVB-T2/S2 HEVC Main10 [Esclusiva Amazon - 2020]",
+            "prev_price": 899.0,
+            "price": 749.0
+        },
+        {
+            "discount": 47.2,
+            "link": "https://www.amazon.it/Panasonic-TX-55HZ1000E-Smart-Master-DolbyAtmos/dp/B089VWCG5J/ref=sr_1_62?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=Tv+55%22+4k&qid=1613823554&sr=8-62",
+            "name": "Panasonic TX-55HZ1000E TV 55\" 4K UHD Smart OLED Master HDR DolbyAtmos",
+            "prev_price": 499.0,
+            "price": 451.8
+        },
+        {
+            "discount": 40.0,
+            "link": "https://www.amazon.it/LG-OLED-ThinQ-OLED55CX6LA-APID-Smart/dp/B0876GK5FN/ref=sr_1_14?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=Tv+55%22+4k&qid=1613823543&sr=8-14",
+            "name": "LG OLED AI ThinQ OLED55CX6LA.APID Smart TV, 4k, 55\"",
+            "prev_price": 699.0,
+            "price": 659.0
+        },
+        {
+            "discount": 20.0,
+            "link": "https://www.amazon.it/SAMSUNG-GU55TU8079UXZG-Ultra-Smart-Wi-Fi/dp/B085L1FRCJ/ref=sr_1_87?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=Tv+55%22+4k&qid=1613823554&sr=8-87",
+            "name": "SAMSUNG GU55TU8079UXZG TV 139,7 cm (55\") 4K Ultra HD Smart TV Wi-Fi Nero GU55TU8079UXZG, 139,7 cm (55\"), 3840 x 2160 Pixel, LED, Smart TV, Wi-Fi, Nero",
+            "prev_price": 349.0,
+            "price": 329.0
+        },
+        {
+            "discount": 8.7,
+            "link": "https://www.amazon.it/Philips-philips-55oled805-grigio-1032262/dp/B089NBN32C/ref=sr_1_128?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=Tv+55%22+4k&qid=1613823565&sr=8-128",
+            "name": "Philips - philips 55oled805/12 tv 139,7 cm (55\") 4k ultra hd smart tv wi-fi grigio - 1032262",
+            "prev_price": 64.9,
+            "price": 56.2
+        }
+    ]
 }

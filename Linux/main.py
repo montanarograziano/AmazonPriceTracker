@@ -17,7 +17,6 @@ def price_to_number(price):
         Exception()
     return float(price)
 
-
 # Set the Url, maximum namber of pages to search, and the item to find
 URL = "https://www.amazon.it/"
 NUMBER_OF_PAGES = 4
@@ -45,12 +44,11 @@ element.send_keys(search_item)
 element.send_keys(Keys.ENTER)
 print('Elaborating...\n')
 
-current_page = NUMBER_OF_PAGES
-
+current_page = 1
 #Loop for 5 pages, for every element trying to get price and previous price
 
 while True:
-    if current_page != 0:
+    if current_page != NUMBER_OF_PAGES:
         try:
             driver.get(driver.current_url + "&page=" + str(current_page))
         except:
@@ -87,12 +85,14 @@ while True:
                     can_add = False
 
             if(should_add == True and can_add == True):
-                products.append(Product(name,price, prev_price, link, round(prev_price-price,3)))
+                new_prod = Product(name,price,prev_price,link,round(prev_price-price,3))
+                if(new_prod not in products):
+                    products.append(Product(name,price, prev_price, link, round(prev_price-price,3)))
              
             counter = counter + 1
     print('Currently analyzing page ' + str(current_page))
-    current_page = current_page - 1
-    if current_page == 0:
+    current_page = current_page + 1
+    if current_page == NUMBER_OF_PAGES:
         break
 
 #Ordering the list of products based on the attribute discount 
