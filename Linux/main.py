@@ -1,8 +1,8 @@
-import requests 
 import json
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 from web_driver_conf import get_web_driver_options
 from web_driver_conf import get_chrome_web_driver
 from web_driver_conf import set_ignore_certificate_error
@@ -39,7 +39,7 @@ driver = get_chrome_web_driver(options)
 
 # Find the SearchBar and inserting the item to find, then press enter
 driver.get(URL)
-element = driver.find_element_by_id('twotabsearchtextbox')
+element = driver.find_element(By.ID ,'twotabsearchtextbox')
 element.send_keys(search_item)
 element.send_keys(Keys.ENTER)
 print('Elaborating...\n')
@@ -54,10 +54,10 @@ while True:
         except:
             break
 #This is the XPath of the div containing all product in the research page
-    for i in driver.find_elements_by_xpath('//*[@id="search"]/div[1]/div[2]/div/span[3]/div[2]'):
+    for i in driver.find_elements(By.XPATH, '/html/body/div[1]/div[2]/div[1]/div[1]/div/span[3]/div[2]'):
         counter = 0
 #In this XPath we can navigate each element of the div above, wich are the products
-        for element in i.find_elements_by_xpath('//div/div/span/div/div/div/div'):
+        for element in i.find_elements(By.XPATH, '//div/div/span/div/div/div/div'):
             should_add = True
             name = ""
             price = ""
@@ -65,10 +65,10 @@ while True:
             link = ""
             try:
                 name = i.find_elements_by_tag_name('h2')[counter].text
-                price = price_to_number(element.find_element_by_class_name('a-price').text)
-                link = i.find_elements_by_xpath('//h2/a')[counter].get_attribute("href")
+                price = price_to_number(element.find_element(By.CLASS_NAME ,'a-price').text)
+                link = i.find_elements(By.XPATH, '//h2/a')[counter].get_attribute("href")
                 try:
-                    prev_price = price_to_number(element.find_element_by_class_name('a-text-price').text)
+                    prev_price = price_to_number(element.find_element(By.CLASS_NAME, 'a-text-price').text)
                 except:
                     Exception()
                     prev_price = price
@@ -107,29 +107,30 @@ with open('products.json', 'w') as json_file:
 
 run = 0
 
-for product in products:
-    if run == 0:
-        lowest_price = product.price
-        chepest_product = product
-        run = 1
-    elif product.price < lowest_price:
-        lowest_price = product.price
-        chepest_product = product
+if len(products) > 0:
+    for product in products:
+        if run == 0:
+            lowest_price = product.price
+            chepest_product = product
+            run = 1
+        elif product.price < lowest_price:
+            lowest_price = product.price
+            chepest_product = product
 
-biggest_discount = products[0].discount
-best_deal_product = products[0]
+    biggest_discount = products[0].discount
+    best_deal_product = products[0]
 
-print('The cheapest product is:\n')
-print(json.dumps(chepest_product.serialize(), indent=4, sort_keys=True))
-print('The best deal is: ')
-print(json.dumps(best_deal_product.serialize(), indent=4, sort_keys=True))
+    print('The cheapest product is:\n')
+    print(json.dumps(chepest_product.serialize(), indent=4, sort_keys=True))
+    print('The best deal is: ')
+    print(json.dumps(best_deal_product.serialize(), indent=4, sort_keys=True))
 
 #Finally opening the first 5 links of the list
-options = get_web_driver_options()
-set_ignore_certificate_error(options)
-driver = get_chrome_web_driver(options)
-driver.get(products[0].link)
-for element in products[1:6]:
-    driver.execute_script("window.open('"+element.link+"')")
+    options = get_web_driver_options()
+    set_ignore_certificate_error(options)
+    driver = get_chrome_web_driver(options)
+    driver.get(products[0].link)
+    for element in products[1:6]:
+        driver.execute_script("window.open('"+element.link+"')")
 
 driver.quit
