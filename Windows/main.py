@@ -56,7 +56,7 @@ while True:
         except:
             break
 #This is the XPath of the div containing all product in the research page
-    for i in driver.find_elements_by_xpath('//*[@id="search"]/div[1]/div[2]/div/span[3]/div[2]'):
+    for i in driver.find_elements_by_xpath('//*[@id="search"]/div[1]/div[1]/div/span[3]/div[2]'):
         counter = 0
 #In this XPath we can navigate each element of the div above, wich are the products
         for element in i.find_elements_by_xpath('//div/div/span/div/div/div/div'):
