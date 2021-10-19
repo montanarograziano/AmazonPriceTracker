@@ -1,8 +1,11 @@
 # AmazonPriceTracker
 
-### A simple tool written in Python used for finding the best deals on Amazon of a certain item.
+## A simple tool written in Python used for finding the best deals on Amazon of a certain item.\
+
+### Table of contents
 - [AmazonPriceTracker](#amazonpricetracker)
-    - [A simple tool written in Python used for finding the best deals on Amazon of a certain item.](#a-simple-tool-written-in-python-used-for-finding-the-best-deals-on-amazon-of-a-certain-item)
+  - [A simple tool written in Python used for finding the best deals on Amazon of a certain item.\](#a-simple-tool-written-in-python-used-for-finding-the-best-deals-on-amazon-of-a-certain-item)
+    - [Table of contents](#table-of-contents)
       - [What id does?](#what-id-does)
       - [Instructions](#instructions)
 
