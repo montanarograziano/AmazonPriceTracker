@@ -10,12 +10,14 @@ from web_driver_conf import set_browser_as_incognito
 from web_driver_conf import set_automation_as_head_less
 from product import Product
 
+
 def price_to_number(price):
     try:
-        price = price.strip()[:-2].replace(',','.')
+        price = price.strip()[:-2].replace(',', '.')
     except:
         Exception()
     return float(price)
+
 
 # Set the Url, maximum namber of pages to search, and the item to find
 URL = "https://www.amazon.it/"
@@ -25,7 +27,7 @@ search_item = str(input('What are you looking for?\n'))
 # Setting value do default
 biggest_discount = 0.0
 lowest_price = 0.0
-chepest_product = Product("", "", "", "", "")
+cheapest_product = Product("", "", "", "", "")
 best_deal_product = Product("", "", "", "", "")
 search_terms = search_item.split(" ")
 products = []
@@ -39,13 +41,13 @@ driver = get_chrome_web_driver(options)
 
 # Find the SearchBar and inserting the item to find, then press enter
 driver.get(URL)
-element = driver.find_element(By.ID ,'twotabsearchtextbox')
+element = driver.find_element(By.ID, 'twotabsearchtextbox')
 element.send_keys(search_item)
 element.send_keys(Keys.ENTER)
 print('Elaborating...\n')
 
 current_page = 1
-#Loop for 5 pages, for every element trying to get price and previous price
+# Loop for 5 pages, for every element trying to get price and previous price
 
 while True:
     if current_page != NUMBER_OF_PAGES:
@@ -53,10 +55,10 @@ while True:
             driver.get(driver.current_url + "&page=" + str(current_page))
         except:
             break
-#This is the XPath of the div containing all product in the research page
+    # This is the XPath of the div containing all product in the research page
     for i in driver.find_elements(By.XPATH, '/html/body/div[1]/div[2]/div[1]/div[1]/div/span[3]/div[2]'):
         counter = 0
-#In this XPath we can navigate each element of the div above, wich are the products
+        # In this XPath we can navigate each element of the div above, wich are the products
         for element in i.find_elements(By.XPATH, '//div/div/span/div/div/div/div'):
             should_add = True
             name = ""
@@ -65,7 +67,7 @@ while True:
             link = ""
             try:
                 name = i.find_elements_by_tag_name('h2')[counter].text
-                price = price_to_number(element.find_element(By.CLASS_NAME ,'a-price').text)
+                price = price_to_number(element.find_element(By.CLASS_NAME, 'a-price').text)
                 link = i.find_elements(By.XPATH, '//h2/a')[counter].get_attribute("href")
                 try:
                     prev_price = price_to_number(element.find_element(By.CLASS_NAME, 'a-text-price').text)
@@ -76,26 +78,26 @@ while True:
             except:
                 should_add = False
 
-            #product = Product(name, price, prev_price, link)
+            # product = Product(name, price, prev_price, link)
             can_add = True
 
-#To improve accuracy, if not every word of the searched item is in the name of the selected item, it won't be add
+            # To improve accuracy, if not every word of the searched item is in the name of the selected item, it won't be add
             for word in search_terms:
                 if word.lower() not in name.lower():
                     can_add = False
 
-            if(should_add == True and can_add == True):
-                new_prod = Product(name,price,prev_price,link,round(prev_price-price,3))
-                if(new_prod not in products):
-                    products.append(Product(name,price, prev_price, link, round(prev_price-price,3)))
-             
+            if (should_add == True and can_add == True):
+                new_prod = Product(name, price, prev_price, link, round(prev_price - price, 3))
+                if (new_prod not in products):
+                    products.append(Product(name, price, prev_price, link, round(prev_price - price, 3)))
+
             counter = counter + 1
     print('Currently analyzing page ' + str(current_page))
     current_page = current_page + 1
     if current_page == NUMBER_OF_PAGES:
         break
 
-#Ordering the list of products based on the attribute discount 
+# Ordering the list of products based on the attribute discount
 products.sort(reverse=True)
 
 with open('products.json', 'w') as json_file:
@@ -103,7 +105,7 @@ with open('products.json', 'w') as json_file:
     data["Products"] = []
     for prod in products:
         data["Products"].append(prod.serialize())
-    json.dump(data, json_file, sort_keys=True, indent=4)    
+    json.dump(data, json_file, sort_keys=True, indent=4)
 
 run = 0
 
@@ -111,26 +113,26 @@ if len(products) > 0:
     for product in products:
         if run == 0:
             lowest_price = product.price
-            chepest_product = product
+            cheapest_product = product
             run = 1
         elif product.price < lowest_price:
             lowest_price = product.price
-            chepest_product = product
+            cheapest_product = product
 
     biggest_discount = products[0].discount
     best_deal_product = products[0]
 
     print('The cheapest product is:\n')
-    print(json.dumps(chepest_product.serialize(), indent=4, sort_keys=True))
+    print(json.dumps(cheapest_product.serialize(), indent=4, sort_keys=True))
     print('The best deal is: ')
     print(json.dumps(best_deal_product.serialize(), indent=4, sort_keys=True))
 
-#Finally opening the first 5 links of the list
+    # Finally opening the first 5 links of the list
     options = get_web_driver_options()
     set_ignore_certificate_error(options)
     driver = get_chrome_web_driver(options)
     driver.get(products[0].link)
     for element in products[1:6]:
-        driver.execute_script("window.open('"+element.link+"')")
+        driver.execute_script("window.open('" + element.link + "')")
 
 driver.quit
